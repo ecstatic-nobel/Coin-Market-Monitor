@@ -40,5 +40,7 @@ CoinMarketCap currently asks that requests to the API are limited to ten (10) pe
 If there are more that ten (10) coins in the specified file, the script will only print ten (10)  
 coins to the screen every sixty (60) seconds.  
 
-Also, make sure that the coin name is spelled the same as on `https://coinmarketcap.com/currencies/COIN_NAME/#tools`  
+Also, make sure that the coin names listed in the file are spelled the same as the `id`.  The  
+top hundred (100) coins and their `id` can be found at `https://api.coinmarketcap.com/v1/ticker/`.  
+You may be able to find other names at `https://coinmarketcap.com/currencies/COIN_NAME/#tools`  
 under `API Ticker`.  
