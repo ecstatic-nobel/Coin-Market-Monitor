@@ -29,47 +29,6 @@ func return_subslice(li []string, low int, high int) []string {
 	return subslice
 }
 
-func show(coins []string) {
-	low      := 0
-	high     := 10
-	iterator := 10
-
-	for {
-		subslice := return_subslice(coins, low, high)
-
-		var sos [][]string
-
-		var wg sync.WaitGroup
-		wg.Add(len(subslice))
-
-		for _, coin := range subslice {
-			go func(coin string, wg *sync.WaitGroup) {
-				slice := cmc(coin, wg)
-				sos    = append(sos, slice)
-			}(coin, &wg)
-		}
-
-		wg.Wait()
-
-		render_table(sos)
-
-		time.Sleep(time.Second * 65)
-
-		low  += iterator
-		high += iterator
-	}
-}
-
-func return_response(coin string) []byte {
-	url     := fmt.Sprintf("https://api.coinmarketcap.com/v1/ticker/%s/", coin)
-	resp, _ := http.Get(url)
-	body, _ := ioutil.ReadAll(resp.Body)
-
-	resp.Body.Close()
-
-	return body
-}
-
 type Response struct {
 	Id               string `json:"id"`
 	Name             string `json:"name"`
@@ -89,6 +48,16 @@ type Response struct {
 }
 
 type Responses []Response
+
+func return_response(coin string) []byte {
+	url     := fmt.Sprintf("https://api.coinmarketcap.com/v1/ticker/%s/", coin)
+	resp, _ := http.Get(url)
+	body, _ := ioutil.ReadAll(resp.Body)
+
+	resp.Body.Close()
+
+	return body
+}
 
 func unmarshal_response(body []byte) Responses {
 	var responses Responses
@@ -111,7 +80,7 @@ func return_slice(responses Responses) []string {
 	return slice
 }
 
-func cmc(coin string, wg *sync.WaitGroup) []string {
+func cmm(coin string, wg *sync.WaitGroup) []string {
 	body      := return_response(coin)
 	responses := unmarshal_response(body)
 	slice     := return_slice(responses)
@@ -129,6 +98,37 @@ func render_table(sos [][]string) {
 	table.Render()
 
 	return
+}
+
+func show(coins []string) {
+	low      := 0
+	high     := 10
+	iterator := 10
+
+	for {
+		subslice := return_subslice(coins, low, high)
+
+		var sos [][]string
+
+		var wg sync.WaitGroup
+		wg.Add(len(subslice))
+
+		for _, coin := range subslice {
+			go func(coin string, wg *sync.WaitGroup) {
+				slice := cmm(coin, wg)
+				sos    = append(sos, slice)
+			}(coin, &wg)
+		}
+
+		wg.Wait()
+
+		render_table(sos)
+
+		time.Sleep(time.Second * 65)
+
+		low  += iterator
+		high += iterator
+	}
 }
 
 func main() {
