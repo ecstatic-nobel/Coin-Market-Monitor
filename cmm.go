@@ -102,8 +102,8 @@ func render_table(sos [][]string) {
 
 func show(coins []string) {
 	low      := 0
-	high     := 10
-	iterator := 10
+	high     := 100
+	iterator := 100
 
 	for {
 		subslice := return_subslice(coins, low, high)
@@ -124,7 +124,7 @@ func show(coins []string) {
 
 		render_table(sos)
 
-		time.Sleep(time.Second * 65)
+		time.Sleep(time.Second * 300)
 
 		low  += iterator
 		high += iterator
