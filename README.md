@@ -11,12 +11,12 @@ This project is used to monitor coins listed on https://coinmarketcap.com/.
 #### Setup  
 Open a terminal and run the following commands:  
 ```bash  
-go get github.com/olekukonko/tablewriter  
 mkdir ~/leunammejii  
 cd ~/leunammejii  
 git clone https://github.com/leunammejii/simple_market_monitor.git  
 cd simple_market_monitor  
-go run coin.go  
+chmod u+x cmm  
+./cmm  
 ```  
 
 You will get the following output:  
@@ -25,8 +25,8 @@ You will get the following output:
 
 To monitor different coins, change the contents of `coins.txt` (or any file containing a list of  
 coin names) and run the following command:  
-```bash
-go run coin.go -f coins.txt  
+```bash  
+./cmm -f coins.txt  
 ```
 
 #### Destroy  
