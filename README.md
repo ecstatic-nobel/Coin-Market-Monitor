@@ -11,8 +11,6 @@ This project is used to monitor coins listed on https://coinmarketcap.com/.
 #### Setup  
 Open a terminal and run the following commands:  
 ```bash
-mkdir ~/leunammejii
-cd ~/leunammejii
 git clone https://github.com/leunammejii/simple_market_monitor.git
 cd simple_market_monitor
 chmod u+x cmm
@@ -31,7 +29,7 @@ To monitor different coins, change the contents of `coins.txt` (or any file cont
 #### Destroy  
 To remove the project completely,  run the following commands:  
 ```bash
-rm -rf ~/leunammejii/simple_market_monitor
+rm -rf simple_market_monitor
 ```
 
 #### Limitations  
