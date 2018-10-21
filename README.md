@@ -16,7 +16,7 @@ cd simple_market_monitor
 ```
 
 then run:  
-bash```
+```bash
 chmod u+x cmm
 ./cmm
 ```
