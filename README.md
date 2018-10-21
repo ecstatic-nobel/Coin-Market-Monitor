@@ -15,13 +15,13 @@ git clone https://github.com/leunammejii/simple_market_monitor.git
 cd simple_market_monitor
 ```
 
-then run:
+then run:  
 bash```
 chmod u+x cmm
 ./cmm
 ```
 
-or 
+or:  
 ```bash
 go get github.com/olekukonko/tablewriter
 go run cmm.go
