@@ -1,4 +1,4 @@
-# [coin_market_monitor]  
+# [Coin Market Monitor]  
 ##### Simple terminal-based monitor of Coin Market Cap written in Go.  
 
 #### Description  
@@ -29,7 +29,7 @@ go run cmm.go
 
 You will get the following output:  
 
-![alt text](https://github.com/leunammejii/coin_market_monitor/blob/master/monitor.png)  
+![alt text](https://github.com/ecstatic-nobel/coin_market_monitor/blob/master/monitor.png)  
 
 To monitor different coins, change the contents of `coins.txt` (or any file containing a list of coin names) and run the following command:  
 ```bash
